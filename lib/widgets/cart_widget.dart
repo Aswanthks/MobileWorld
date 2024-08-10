@@ -43,27 +43,25 @@ class _CartScreenState extends State<CartScreen> {
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.amber, Colors.black],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+            color: Colors.blue
           ),
         ),
         title: const Row(
           children: [
-            SizedBox(width: 130),
+            SizedBox(width: 0),
             Text(
               'Cart',
               style: TextStyle(
                 color: Colors.white,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.bold
+                ,
                 fontSize: 30,
               ),
             ),
           ],
         ),
       ),
+
       body: ListView.builder(
         itemCount: cartprovider.cartData.length,
         itemBuilder: (context, index) {
@@ -72,8 +70,8 @@ class _CartScreenState extends State<CartScreen> {
             child: Container(
               height: 110,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(color: Colors.pinkAccent),
               ),
               child: Row(
                 children: [

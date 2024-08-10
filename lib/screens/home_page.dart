@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecomnode/screens/favourite_page.dart';
 import 'package:ecomnode/services/auth_service.dart';
 import 'package:ecomnode/viewmodel/product_view_model.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,6 +15,7 @@ import '../admin/admhome.dart';
 import '../model/product_model.dart';
 import '../utils/mobile.dart';
 import '../viewmodel/cart_view_model.dart';
+import '../viewmodel/favourite_view_model.dart';
 import '../widgets/cart_widget.dart';
 import '../widgets/smartwatchwidget.dart';
 import '../widgets/view_profile_widget.dart';
@@ -66,7 +69,7 @@ class _HomeState extends State<Home> {
         children: <Widget>[
           buildHomePage(),
           CartScreen(),
-          Center(child: Text("Cart Widget")),
+          FavoritePage(),
           ViewProfile(),
         ],
       ),
@@ -139,12 +142,55 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
+
+
+
+
                 SizedBox(width: 10),
-                // IconButton(onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) =>AdminScreen() ,));}, icon: Icon(Icons.menu)),
+                IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
               ],
             ),
           ),
+
           SizedBox(height: 15),
+
+
+
+
+
+          SizedBox(height: 200,child: CarouselSlider(
+            options: CarouselOptions(
+              autoPlay: true,
+              enlargeCenterPage: true,
+              aspectRatio: 16/9,
+              viewportFraction: 0.8,
+            ),
+            items: [
+              'https://via.placeholder.com/600x300?text=Banner+1',
+              'https://via.placeholder.com/600x300?text=Banner+2',
+              'https://via.placeholder.com/600x300?text=Banner+3',
+            ].map((item) => Builder(
+              builder: (BuildContext context) {
+                return Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: NetworkImage(item),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                );
+              },
+            )).toList(),
+          ),),
+
+          SizedBox(height: 15),
+
+
+
           TabBar(
             isScrollable: false,
             indicatorColor: Colors.black,
@@ -157,6 +203,10 @@ class _HomeState extends State<Home> {
               Tab(text: 'Other'),
             ],
           ),
+
+
+
+
           Expanded(
             child: TabBarView(
               children: [
@@ -210,6 +260,13 @@ class _HomeState extends State<Home> {
                                     right: 8,
                                     child: IconButton(
                                       onPressed: () {
+                                        final favoriteViewModel = Provider.of<FavoriteViewModel>(context, listen: false);
+                                        favoriteViewModel.addToFavorites(item);
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                          SnackBar(
+                                            content: Text('Item added to favorites!'),
+                                          ),
+                                        );
                                         // Implement favorite functionality here
                                       },
                                       icon: Icon(
