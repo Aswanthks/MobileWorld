@@ -12,15 +12,15 @@ class ViewProfile extends StatelessWidget {
       appBar: AppBar(
         title: Text('Profile'),
         actions: [
-          IconButton(
-            icon: Icon(Icons.logout),
-            onPressed: () {
+           IconButton(
+             icon: Icon(Icons.logout),
+             onPressed: () {
               // Call logout method from view model
        Navigator.push(context, MaterialPageRoute(builder:(context) => signuppage(),));
             },
           ),
-        ],
-      ),
+         ],
+       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

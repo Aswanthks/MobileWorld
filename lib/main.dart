@@ -23,7 +23,7 @@ void main() {
     ],
   child:
       MaterialApp(
-      home:signuppage()
+      home:Home()
   )));
 }
 

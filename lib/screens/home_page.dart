@@ -166,8 +166,8 @@ class _HomeState extends State<Home> {
               viewportFraction: 0.8,
             ),
             items: [
-              'https://via.placeholder.com/600x300?text=Banner+1',
-              'https://via.placeholder.com/600x300?text=Banner+2',
+              'assets/image/samsung-galaxy-z-fold5-1706151974.jpg',
+              'assets/image/images (1).jpeg',
               'https://via.placeholder.com/600x300?text=Banner+3',
             ].map((item) => Builder(
               builder: (BuildContext context) {
@@ -178,7 +178,7 @@ class _HomeState extends State<Home> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: NetworkImage(item),
+                      image: AssetImage(item),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -257,7 +257,7 @@ class _HomeState extends State<Home> {
                                   ),
                                   Positioned(
                                     top: 2,
-                                    right: 8,
+                                    right: 2,
                                     child: IconButton(
                                       onPressed: () {
                                         final favoriteViewModel = Provider.of<FavoriteViewModel>(context, listen: false);
