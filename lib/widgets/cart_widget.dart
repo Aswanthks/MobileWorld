@@ -32,10 +32,27 @@ class _CartScreenState extends State<CartScreen> {
     }
   }
 
+  double calculateTotal() {
+    final cartProvider = Provider.of<CartViewModel>(context, listen: false);
+    double total = 0.0;
+
+    for (int index = 0; index < cartProvider.cartData.length; index++) {
+      num price = cartProvider.cartData[index].price ?? 0.0;
+      int quantity = cartProvider.cartItems[index].quantity ?? 0;
+      total += price * quantity;
+    }
+
+    return total;
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     final cartprovider = context.watch<CartViewModel>();
     final authprovider = Authserrvices();
+    final total = calculateTotal();
 
     print(cartprovider.cartData.length);
 
@@ -249,20 +266,40 @@ class _CartScreenState extends State<CartScreen> {
           Container(
             padding: const EdgeInsets.all(10.0),
             color: Colors.white,
-            child: Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentPage(totalAmount: Checkbox.width,),));
-                  print('Checkout buttonaks pressed');
-                },
-                style: ElevatedButton.styleFrom(
-                   backgroundColor: Colors.blue,
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  minimumSize: const Size(300, 30),
-                  textStyle: const TextStyle(fontSize: 18),
+            child: Column(
+              children: [
+                // Display total amount here
+                Text(
+                  "Total:  ₹${total.toStringAsFixed(1)}",
+                  style: const TextStyle(
+                    fontFamily: "Airbnb",
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                child: const Text('Checkout',style: TextStyle(color: Colors.white,fontSize: 20),),
-              ),
+                const SizedBox(height: 10), // Add some space between total amount and button
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PaymentPage(totalAmount: total),
+                      ),
+                    );
+                    print('Checkout button pressed');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    minimumSize: const Size(300, 30),
+                    textStyle: const TextStyle(fontSize: 18),
+                  ),
+                  child: const Text(
+                    'Checkout',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
