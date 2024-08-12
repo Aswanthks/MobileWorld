@@ -9,8 +9,8 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Favorites"),
+      appBar: AppBar(backgroundColor: Colors.blue,
+        title: Text("Favorites",style: TextStyle(color: Colors.white,fontWeight:FontWeight.bold,fontSize: 25),),
       ),
       body: Consumer<FavoriteViewModel>(
         builder: (context, favoriteViewModel, child) {
@@ -21,7 +21,7 @@ class FavoritePage extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: 15.0,
               crossAxisSpacing: 15.0,
-              childAspectRatio: .5,
+              childAspectRatio: .8,
             ),
             itemBuilder: (BuildContext context, int index) {
               final item = favoriteViewModel.favorites[index];
