@@ -73,12 +73,15 @@ class _PaymentPageState extends State<PaymentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        centerTitle: true,
+        backgroundColor: Colors.blue,
+
         title: Text(
           "Make Payment",
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.w600,
+            color: Colors.white,
+
+
           ),
         ),
         elevation: 0.5,

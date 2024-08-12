@@ -22,8 +22,8 @@ void main() {
 
     ],
   child:
-      MaterialApp(
-      home:Home()
+      MaterialApp(debugShowCheckedModeBanner: false,
+      home:signuppage()
   )));
 }
 
