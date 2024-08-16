@@ -8,34 +8,58 @@ import '../services/favorite_service.dart';
 import 'package:flutter/material.dart';
 import '../model/product_model.dart';
 
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../model/product_model.dart';
+
 class FavoriteViewModel extends ChangeNotifier {
   List<ProductModel> _favorites = [];
 
   List<ProductModel> get favorites => _favorites;
 
-  // Check if a product is in the favorites list
+  FavoriteViewModel() {
+    _loadFavorites();
+  }
+
+  Future<void> _saveFavorites() async {
+    final prefs = await SharedPreferences.getInstance();
+    final jsonFavorites = _favorites.map((item) => json.encode(item.toJson())).toList();
+    prefs.setStringList('favorites', jsonFavorites);
+  }
+
+  Future<void> _loadFavorites() async {
+    final prefs = await SharedPreferences.getInstance();
+    final List<String>? jsonFavorites = prefs.getStringList('favorites');
+    if (jsonFavorites != null) {
+      _favorites = jsonFavorites.map((item) {
+        final jsonItem = json.decode(item);
+        return ProductModel.fromJson(jsonItem);
+      }).toList();
+      notifyListeners();
+    }
+  }
+
   bool isFavorite(ProductModel product) {
     return _favorites.contains(product);
   }
 
-  // Add a product to the favorites list
   void addToFavorites(ProductModel product) {
     if (!isFavorite(product)) {
       _favorites.add(product);
+      _saveFavorites();
       notifyListeners();
     }
   }
 
-  // Remove a product from the favorites list
   void removeFromFavorites(ProductModel product) {
     if (isFavorite(product)) {
       _favorites.remove(product);
+      _saveFavorites();
       notifyListeners();
     }
   }
 }
-
-
 
 
 class WishViewModel extends ChangeNotifier {

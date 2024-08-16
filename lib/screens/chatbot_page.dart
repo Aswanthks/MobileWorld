@@ -42,8 +42,26 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(backgroundColor: Colors.blue,
-          title: const Text('Chat Bot',),
+        appBar: AppBar(
+
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+          ),
+          title: const Row(
+            children: [
+
+              Text(
+                'Chatbot',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28,
+                ),
+              ),
+            ],
+          ),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.end,

@@ -72,7 +72,7 @@ class _CartScreenState extends State<CartScreen> {
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 30,
+                fontSize: 28,
               ),
             ),
           ],

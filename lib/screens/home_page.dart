@@ -199,7 +199,7 @@ class _HomeState extends State<Home> {
               autoPlay: true,
               enlargeCenterPage: true,
               aspectRatio: 16/9,
-              viewportFraction: 1.01,
+              viewportFraction: .97,
             ),
             items: [
               'assets/image/6183700150082456586 (2).jpg',

@@ -40,13 +40,14 @@ class _signuppageState extends State<signuppage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
 
-              SizedBox(
-                height: 50,
-              ),
-              Image.asset('assets/img/lofin2.png', height: 150, width: 150),
-              SizedBox(
-                height: 16,
-              ),
+              // SizedBox(
+              //   height: 50,
+              // ),
+              // Image.asset('assets/image/logo-white.png', height: 150, width: 150),
+              // SizedBox(
+              //   height: 16,
+              // ),
+              SizedBox(height: 80,),
               Text(
                 "Signup",
                 style: TextStyle(color: Colors.white, fontSize: 20),

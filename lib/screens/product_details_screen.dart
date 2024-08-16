@@ -31,6 +31,23 @@ class ProductDetailsScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16),
+
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ArPage(
+                        imageUrl: item.image ?? "",
+                      ),
+                    ),
+                  );
+                },
+                child: Text("View in AR"),
+              ),
+
+
+
               Text(
                 item.name ?? "",
                 style: TextStyle(
@@ -56,19 +73,7 @@ class ProductDetailsScreen extends StatelessWidget {
               ),
         
               SizedBox(height: 16),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //         builder: (context) => ARView(
-              //           imageUrl: item.image ?? "",
-              //         ),
-              //       ),
-              //     );
-              //   },
-              //   child: Text("View in AR"),
-              // ),
+
         
             ],
           ),

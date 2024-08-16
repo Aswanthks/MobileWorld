@@ -3,6 +3,7 @@
 
 import 'package:ecomnode/screens/home_page.dart';
 import 'package:ecomnode/screens/pay_sucess.dart';
+import 'package:ecomnode/screens/place_order_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,6 +12,7 @@ class PaymentPage extends StatefulWidget {
 
   const PaymentPage({Key? key, required this.totalAmount}) : super(key: key);
 
+
   @override
   _PaymentPageState createState() => _PaymentPageState();
 }
@@ -18,11 +20,13 @@ class PaymentPage extends StatefulWidget {
 class _PaymentPageState extends State<PaymentPage> {
   String? _selectedPaymentMethod;
   TextEditingController _addressController = TextEditingController();
+  late double total = 0;
 
   @override
   void initState() {
     super.initState();
-    _addressController.text; //
+    _addressController.text;
+    total = widget.totalAmount ?? 0;//
     // Default address
   }
 
@@ -93,32 +97,32 @@ class _PaymentPageState extends State<PaymentPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Delivery Address",
-                style: GoogleFonts.poppins(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10),
-              ListTile(
-                title: Text(""),
-                subtitle: Text(
-                  _addressController.text.isEmpty ? 'Add your address' : _addressController.text,
-                  style: TextStyle(
-                    color: _addressController.text.isEmpty ? Colors.grey : Colors.black,
-                  ),
-                ),
-                trailing: TextButton(
-                  onPressed: () {
-                    _showAddressDialog();
-                  },
-                  child: Text(
-                    "Change",
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                ),
-              ),
+              // Text(
+              //   "Delivery Address",
+              //   style: GoogleFonts.poppins(
+              //     fontSize: 18,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
+              // SizedBox(height: 10),
+              // ListTile(
+              //   title: Text(""),
+              //   subtitle: Text(
+              //     _addressController.text.isEmpty ? 'Add your address' : _addressController.text,
+              //     style: TextStyle(
+              //       color: _addressController.text.isEmpty ? Colors.grey : Colors.black,
+              //     ),
+              //   ),
+              //   trailing: TextButton(
+              //     onPressed: () {
+              //       _showAddressDialog();
+              //     },
+              //     child: Text(
+              //       "Change",
+              //       style: TextStyle(color: Colors.blue),
+              //     ),
+              //   ),
+              // ),
         
               Divider(),
               Text(
@@ -137,10 +141,10 @@ class _PaymentPageState extends State<PaymentPage> {
                   });
                 },
                 items: <String>[
-                  'Credit Card',
+                  'Gpay',
                   'Debit Card',
                   'PayPal',
-                  'Other',
+                  'Cash on Delivery',
                 ].map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -185,7 +189,7 @@ class _PaymentPageState extends State<PaymentPage> {
 
                     // Navigate back to previous page after a delay (optional)
                     Future.delayed(Duration(seconds: 2), () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Home(),));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceOrderPage(totalAmount: total),));
                     });
                   },
                   child: Text(

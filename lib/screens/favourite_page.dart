@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,8 +8,26 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.blue,
-        title: Text("Favorites",style: TextStyle(color: Colors.white,fontWeight:FontWeight.bold,fontSize: 25),),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            color: Colors.blue,
+          ),
+        ),
+        title: const Row(
+          children: [
+            SizedBox(width: 20),
+            Text(
+              'Favourites',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 28,
+              ),
+            ),
+          ],
+        ),
       ),
       body: Consumer<FavoriteViewModel>(
         builder: (context, favoriteViewModel, child) {
@@ -21,7 +38,7 @@ class FavoritePage extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: 15.0,
               crossAxisSpacing: 15.0,
-              childAspectRatio: .8,
+              childAspectRatio: .7,
             ),
             itemBuilder: (BuildContext context, int index) {
               final item = favoriteViewModel.favorites[index];
@@ -57,20 +74,29 @@ class FavoritePage extends StatelessWidget {
                         ),
                         Positioned(
                           top: 2,
-                          right: 8,
+                          right: 2,
                           child: IconButton(
                             onPressed: () {
                               final favoriteViewModel = Provider.of<FavoriteViewModel>(context, listen: false);
-                              favoriteViewModel.removeFromFavorites(item);
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('Item removed from favorites!'),
-                                ),
-                              );
+                              if (favoriteViewModel.isFavorite(item)) {
+                                favoriteViewModel.removeFromFavorites(item);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Item removed from favorites!'),
+                                  ),
+                                );
+                              } else {
+                                favoriteViewModel.addToFavorites(item);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Item added to favorites!'),
+                                  ),
+                                );
+                              }
                             },
                             icon: Icon(
-                              Icons.remove_circle,
-                              color: Colors.red,
+                              Icons.favorite_sharp,
+                              color: favoriteViewModel.isFavorite(item) ? Colors.red : Colors.grey,
                               size: 24.0,
                             ),
                           ),
