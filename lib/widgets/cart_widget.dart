@@ -71,8 +71,8 @@ class _CartScreenState extends State<CartScreen> {
               'Cart',
               style: TextStyle(
                 color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 28,
+
+                fontSize: 21,
               ),
             ),
           ],
@@ -85,9 +85,9 @@ class _CartScreenState extends State<CartScreen> {
               itemCount: cartprovider.cartData.length,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.only(top: 8,left: 10,right: 10,bottom: 2),
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4), // Adjust padding as needed
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2), // Adjust padding as needed
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(14), // Changed radius to make corners less rounded
                       border: Border.all(color: Colors.blue, width: 5), // Changed border color to blue and width to 2
@@ -95,17 +95,17 @@ class _CartScreenState extends State<CartScreen> {
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.3), // Light grey shadow
-                          spreadRadius: 2, // Spread radius of the shadow
-                          blurRadius: 4, // Blur radius of the shadow
-                          offset: Offset(0, 6), // Shadow position
+                          spreadRadius: .1, // Spread radius of the shadow
+                          blurRadius: 0, // Blur radius of the shadow
+                          // offset: Offset(0, 6), // Shadow position
                         ),
                       ],
                     ),
                     child: Row(
                       children: [
                         SizedBox(
-                          height: 100,
-                          width: 100,
+                          height: 90,
+                          width: 90,
                           child: Image.network(
                             cartprovider.cartData[index].image ?? 'image',
                           ),
@@ -116,7 +116,7 @@ class _CartScreenState extends State<CartScreen> {
                             child: Container(
                               color: Colors.black.withOpacity(0.5), // Semi-transparent overlay color
                               width: 0.5, // Width of the overlay
-                              height: 102, // Height of the overlay
+                              height: 90, // Height of the overlay
                             ),
                           ),
                         ),
@@ -131,7 +131,7 @@ class _CartScreenState extends State<CartScreen> {
                                   Text(
                                     cartprovider.cartData[index].name ?? 'name',
                                     style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -174,14 +174,14 @@ class _CartScreenState extends State<CartScreen> {
                                   const Text(
                                     'Quantity:',
                                     style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 15,
                                       fontWeight: FontWeight.normal,
                                     ),
                                   ),
                                   const SizedBox(width: 5),
                                   Text(
                                     cartprovider.cartItems[index].quantity.toString(),
-                                    style: TextStyle(fontSize: 17),
+                                    style: TextStyle(fontSize: 15),
                                   ),
                                   const Spacer(),
                                   const SizedBox(width: 5),
@@ -192,15 +192,15 @@ class _CartScreenState extends State<CartScreen> {
                                   const Text(
                                     'Rs: ',
                                     style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+
                                     ),
                                   ),
                                   Text(
                                     ((cartprovider.cartData[index].price)! *
                                         (cartprovider.cartItems[index].quantity)!.toInt())
                                         .toString(),
-                                    style: TextStyle(fontSize: 18),
+                                    style: TextStyle(fontSize: 15),
                                   ),
                                   Spacer(), // Reduced spacing between Text and Container
                                   Transform.translate(
@@ -273,7 +273,7 @@ class _CartScreenState extends State<CartScreen> {
                   "Total:  ₹${total.toStringAsFixed(1)}",
                   style: const TextStyle(
                     fontFamily: "Airbnb",
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

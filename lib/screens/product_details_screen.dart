@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../model/product_model.dart';
+import '../services/auth_service.dart';
+import '../viewmodel/cart_view_model.dart';
 import '../widgets/ar_view.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -44,6 +47,39 @@ class ProductDetailsScreen extends StatelessWidget {
                   );
                 },
                 child: Text("View in AR"),
+              ),
+
+              ElevatedButton(
+                onPressed: () {
+                  print('Adding item to cart: ');
+
+                  final cartViewModel = Provider.of<CartViewModel>(context, listen: false);
+                  cartViewModel.addProductToCart(
+                    userid: Authserrvices.userId.toString(), // Replace with actual user ID
+                    product: item,
+                    context: context,
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Item added to cart!'),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(vertical: 3, horizontal: 24),
+                  backgroundColor: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Text(
+                  'Add to Cart',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
               ),
 
 
