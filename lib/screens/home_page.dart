@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecomnode/screens/favourite_page.dart';
 import 'package:ecomnode/screens/product_details_screen.dart';
+import 'package:ecomnode/screens/view_profile_screen.dart';
 import 'package:ecomnode/viewmodel/product_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import 'package:provider/provider.dart';
 import '../viewmodel/cart_view_model.dart';
 import '../viewmodel/favourite_view_model.dart';
 import '../widgets/cart_widget.dart';
-import 'view_profile_widget.dart';
+
 import '../model/product_model.dart';
 import 'home_page2.dart';
 

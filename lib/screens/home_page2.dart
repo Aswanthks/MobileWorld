@@ -255,7 +255,7 @@ class _HomePageState extends State<HomePage> {
                       Column(
                         children: [
                           Image.asset(
-                            'assets/image/img.png',
+                            'assets/image/image-removebg-preview (1).png',
                             height: 50,
                           ),
                           SizedBox(height: 5),
@@ -273,14 +273,14 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ],
-                  ),SizedBox(height: 10,),
+                  ),SizedBox(height: 11,),
 
 
 
 
     Padding(
                     padding: const EdgeInsets.only(left: 12,right: 12),
-                    child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: [Text("Popular",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),Text("View All",style: TextStyle(color: Colors.blue),)],),
+                    child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: [Text("Popular",style: TextStyle(fontSize: 21,fontWeight: FontWeight.bold),),Text("View All",style: TextStyle(color: Colors.blue),)],),
                   ),
                   Consumer<ProductViewModel>(
                     builder: (context, value, child) {
@@ -368,7 +368,7 @@ class _HomePageState extends State<HomePage> {
                                   ],
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 0,left: 8),
+                                  padding: const EdgeInsets.only(top: 0,left: 13),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [

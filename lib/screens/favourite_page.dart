@@ -22,8 +22,8 @@ class FavoritePage extends StatelessWidget {
               'Favourites',
               style: TextStyle(
                 color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 28,
+
+                fontSize: 21,
               ),
             ),
           ],
@@ -45,11 +45,11 @@ class FavoritePage extends StatelessWidget {
               return Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
+                      spreadRadius: 0,
                       blurRadius: 5,
                       offset: Offset(0, 3),
                     ),

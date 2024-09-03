@@ -1,3 +1,4 @@
+import 'package:ecomnode/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
 class PaymentSuccessDialog extends StatelessWidget {
@@ -36,32 +37,32 @@ class PaymentSuccessDialog extends StatelessWidget {
                 SizedBox(height: 24),
                 Text(
                   'Payment Successful',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 16),
                 Text(
-                  'Thank you for your payment!',
-                  style: TextStyle(fontSize: 14),
+                  'Order Placed Successfully!',
+                  style: TextStyle(fontSize: 16),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 24),
-                // ElevatedButton(
-                //   onPressed: () {
-                //     Navigator.of(context).pop(); // Close the dialog
-                //     Navigator.of(context).pop(); // Close the PaymentPage
-                //   },
-                //   child: Text(
-                //     'OK',
-                //     style: TextStyle(color: Colors.white),
-                //   ),
-                //   style: ElevatedButton.styleFrom(
-                //     backgroundColor: Colors.blue,
-                //     shape: RoundedRectangleBorder(
-                //       borderRadius: BorderRadius.circular(8),
-                //     ),
-                //   ),
-                // ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Close the dialog
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Home(),)); // Close the PaymentPage
+                  },
+                  child: Text(
+                    'OK',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

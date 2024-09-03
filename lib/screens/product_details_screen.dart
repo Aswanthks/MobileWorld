@@ -15,7 +15,7 @@ class ProductDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Product Details",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 25),),
+        title: Text("Product Details",style: TextStyle(color: Colors.white,fontSize: 21),),
         backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
