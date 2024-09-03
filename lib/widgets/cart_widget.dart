@@ -273,7 +273,7 @@ class _CartScreenState extends State<CartScreen> {
                   "Total:  ₹${total.toStringAsFixed(1)}",
                   style: const TextStyle(
                     fontFamily: "Airbnb",
-                    fontSize: 20,
+                    fontSize: 18.2,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -296,7 +296,7 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                   child: const Text(
                     'Checkout',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ),
               ],

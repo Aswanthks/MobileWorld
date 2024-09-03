@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 
 void main() {
 
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,

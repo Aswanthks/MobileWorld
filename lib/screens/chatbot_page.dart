@@ -56,8 +56,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 'Chatbot',
                 style: TextStyle(
                   color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28,
+
+                  fontSize: 21,
                 ),
               ),
             ],
